@@ -20,7 +20,5 @@ export function noHomeroValidator(): ValidatorFn {
     }
 
     return null;
-    // NULL seria el caso en el que el control sea VALIDO
-    // es como decir que no hay ningun error...
   };
 }

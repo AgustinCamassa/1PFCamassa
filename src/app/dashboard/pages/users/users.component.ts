@@ -23,40 +23,20 @@ export class UsersComponent {
   public today = new Date();
 
   constructor(private matDialog: MatDialog) {
-    // interface Alumno {
-    //   nombre: string;
-    //   nota: number;
-    // }
-    // interface Profesor {
-    //   nombre: string;
-    //   email: string;
-    // }
 
-    // const alumno: Alumno = { nombre: 'Juan', nota: 10 };
-    // const otroAlumno: any = { nombre: 'Pepito', nota: 5 };
-    // const profesor: Profesor = { nombre: 'Emilia', email: 'email@mail.com' }
-
-    // function isAlumno(obj: unknown): obj is Alumno {
-    //   if (!obj) return false;
-    //   return typeof obj === 'object' && 'nombre' in obj && 'nota' in obj;
-    // }
-
-    // if (isAlumno(otroAlumno)) {
-    //   otroAlumno
-    // }
   }
 
   onCreateUser(): void {
     this.matDialog
-      // ABRO EL MODAL
+
       .open(UserFormDialogComponent)
-      // Y DESPUES DE QUE CIERRE
+
       .afterClosed()
-      // HAGO ESTO...
+
       .subscribe({
         next: (v) => {
           if (v) {
-            // this.users.push()
+
             this.users = [
               ...this.users,
               {
@@ -83,21 +63,21 @@ export class UsersComponent {
 
   onEditUser(userToEdit: User): void {
     this.matDialog
-    // ABRO EL MODAL
+
     .open(UserFormDialogComponent, {
       data: userToEdit
     })
-    // Y DESPUES DE QUE CIERRE
+
     .afterClosed()
-    // HAGO ESTO...
+
     .subscribe({
       next: (userUpdated) => {
         console.log(userUpdated)
         if (userUpdated) {
           this.users = this.users.map((user) => {
             return user.id === userToEdit.id
-              ? { ...user, ...userUpdated } // VERDADERO
-              : user // FALSO ;
+              ? { ...user, ...userUpdated }
+              : user
           })
         }
       },

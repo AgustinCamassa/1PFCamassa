@@ -1,18 +1,16 @@
-<mat-drawer-container class="example-container" autosize>
-  <!-- SIDEBAR -->
-  <mat-drawer mode="over" #drawer class="example-sidenav" mode="side">
+<mat-drawer-container class="color" class="example-container" autosize>
+
+  <mat-drawer class="color" mode="over" #drawer class="example-sidenav" mode="side">
     <ul>
       <li>
         <a href="">Inicio</a>
       </li>
     </ul>
   </mat-drawer>
-  <!-- FIN SIDEBAR -->
 
-  <!-- CONTENT WRAPPER-->
   <div class="example-sidenav-content">
-    <!-- TOOLBAR -->
-    <mat-toolbar color="primary">
+
+    <mat-toolbar class="color" color="primary">
       <button
         (click)="drawer.toggle()"
         mat-icon-button
@@ -21,12 +19,11 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <span>My App</span>
+      <span>TechMind</span>
     </mat-toolbar>
-    <!-- FIN TOOLBAR -->
 
     <main class="p-3">
-      <!-- <app-home></app-home> -->
+ 
       <app-users></app-users>
     </main>
   </div>

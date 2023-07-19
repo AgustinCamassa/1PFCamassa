@@ -27,16 +27,11 @@ export class UserFormDialogComponent {
     password: this.passwordControl,
   });
 
-  // userForm: FormGroup;
-
   constructor(
     private dialogRef: MatDialogRef<UserFormDialogComponent>,
     @Inject(MAT_DIALOG_DATA) private data?: User
   ) {
-    // this.userForm = this.formBuilder.group({
-    //   name: [null, [Validators.required, Validators.min(2)]],
-    //   surname: [null, [Validators.required]],
-    // });
+
     if (this.data) {
       this.nameControl.setValue(this.data.name);
       this.surnameControl.setValue(this.data.surname);

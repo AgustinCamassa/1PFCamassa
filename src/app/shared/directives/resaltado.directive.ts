@@ -27,10 +27,5 @@ export class ResaltadoDirective implements OnChanges {
       'background-color',
       this.appResaltado
     );
-    // this.renderer2.setStyle(
-    //   this.elementRef.nativeElement,
-    //   'font-size',
-    //   '20px'
-    // );
   }
 }
