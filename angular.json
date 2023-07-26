@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "pre-entrega-camassa": {
+    "programacion-reactiva-camassa": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/pre-entrega-camassa",
+            "outputPath": "dist/programacion-reactiva-camassa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "pre-entrega-camassa:build:production"
+              "browserTarget": "programacion-reactiva-camassa:build:production"
             },
             "development": {
-              "browserTarget": "pre-entrega-camassa:build:development"
+              "browserTarget": "programacion-reactiva-camassa:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "pre-entrega-camassa:build"
+            "browserTarget": "programacion-reactiva-camassa:build"
           }
         },
         "test": {
@@ -105,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "602d29a1-2603-40d7-bb4b-315baa3b03ba"
+    "analytics": "b423cd36-8011-4080-baef-afec09741b10"
   }
 }

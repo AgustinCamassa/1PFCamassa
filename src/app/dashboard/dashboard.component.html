@@ -1,6 +1,6 @@
-<mat-drawer-container class="color" class="example-container" autosize>
-
-  <mat-drawer class="color" mode="over" #drawer class="example-sidenav" mode="side">
+<mat-drawer-container class="example-container" autosize>
+  <!-- SIDEBAR -->
+  <mat-drawer mode="over" #drawer class="example-sidenav" mode="side">
     <ul>
       <li>
         <a href="">Inicio</a>
@@ -10,7 +10,7 @@
 
   <div class="example-sidenav-content">
 
-    <mat-toolbar class="color" color="primary">
+    <mat-toolbar color="primary">
       <button
         (click)="drawer.toggle()"
         mat-icon-button
@@ -19,12 +19,13 @@
       >
         <mat-icon>menu</mat-icon>
       </button>
-      <span>TechMind</span>
+      <span>My App</span>
     </mat-toolbar>
 
     <main class="p-3">
- 
-      <app-users></app-users>
+
+      <button (click)="showPage = !showPage">Alternar pagina</button>
+      <app-users *ngIf="showPage"></app-users>
     </main>
   </div>
 </mat-drawer-container>

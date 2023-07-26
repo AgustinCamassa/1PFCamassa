@@ -1,7 +1,5 @@
-<h1 appMayus>Tabla de Usuarios</h1>
-
 <div class="mb-5">
-  <button (click)="onCreateUser()" mat-flat-button color="accent" type="button">
+  <button (click)="onCreateUser()" mat-flat-button color="primary" type="button">
     <mat-icon>add</mat-icon>
     Crear usuario
   </button>
@@ -9,8 +7,21 @@
 
 <p>Fecha actual: {{ today | date: 'fullDate' }}</p>
 
+<h1 *appRepetir="1">
+  Lista de Usuarios
+</h1>
+
+
+<h2>{{ loading ? 'Cargando...' : '' }}</h2>
+
+<div *ngIf="!loading">
+  {{ nombres }}
+  <br>
+  {{ numeros }}
+</div>
+
 <app-users-table
-  [dataSource]="users"
+  [dataSource]="(users | async) || []"
   (deleteUser)="onDeleteUser($event)"
   (editUser)="onEditUser($event)"
 ></app-users-table>
