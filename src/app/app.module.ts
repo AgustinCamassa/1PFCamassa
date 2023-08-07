@@ -9,6 +9,12 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatCardModule } from '@angular/material/card';
 import eslocale from '@angular/common/locales/es-AR'
 import { registerLocaleData } from '@angular/common';
+import { AuthModule } from './auth/auth.module';
+import { ProductsModule } from './dashboard/pages/products/products.module';
+import { CoursesModule } from './dashboard/pages/courses/courses.module';
+import { TeachersModule } from './dashboard/pages/teachers/teachers.module';
+import { InscriptionsModule } from './dashboard/pages/inscriptions/inscriptions.module';
+import { StudentsModule } from './dashboard/pages/students/students.module';
 
 registerLocaleData(eslocale);
 
@@ -20,7 +26,12 @@ registerLocaleData(eslocale);
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DashboardModule,
+    DashboardModule, // dashboard module
+    AuthModule, // auth module
+    CoursesModule,
+    TeachersModule,
+    InscriptionsModule,
+    StudentsModule,
     MatCardModule
   ],
   providers: [

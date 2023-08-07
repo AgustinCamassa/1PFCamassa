@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "programacion-reactiva-camassa": {
+    "agustin-camassa": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/programacion-reactiva-camassa",
+            "outputPath": "dist/agustin-camassa",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "programacion-reactiva-camassa:build:production"
+              "browserTarget": "agustin-camassa:build:production"
             },
             "development": {
-              "browserTarget": "programacion-reactiva-camassa:build:development"
+              "browserTarget": "agustin-camassa:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "programacion-reactiva-camassa:build"
+            "browserTarget": "agustin-camassa:build"
           }
         },
         "test": {
@@ -105,6 +105,6 @@
     }
   },
   "cli": {
-    "analytics": "b423cd36-8011-4080-baef-afec09741b10"
+    "analytics": "43f9361b-ed9f-4c24-b2d3-dc3792dc00dd"
   }
 }

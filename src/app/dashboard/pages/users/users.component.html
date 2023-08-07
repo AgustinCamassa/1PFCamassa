@@ -4,22 +4,6 @@
     Crear usuario
   </button>
 </div>
-
-<p>Fecha actual: {{ today | date: 'fullDate' }}</p>
-
-<h1 *appRepetir="1">
-  Lista de Usuarios
-</h1>
-
-
-<h2>{{ loading ? 'Cargando...' : '' }}</h2>
-
-<div *ngIf="!loading">
-  {{ nombres }}
-  <br>
-  {{ numeros }}
-</div>
-
 <app-users-table
   [dataSource]="(users | async) || []"
   (deleteUser)="onDeleteUser($event)"
