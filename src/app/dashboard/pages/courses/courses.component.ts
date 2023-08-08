@@ -15,7 +15,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   public data$: Observable<Course[]>;
 
-  public displayedColumns = ['id', 'name', 'price, actions'];
+  public displayedColumns = ['id', 'name', 'price', 'actions'];
 
   constructor(private courseService: CourseService) {
     this.data$ = this.courseService.getCourses();

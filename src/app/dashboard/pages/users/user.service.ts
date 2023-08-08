@@ -6,16 +6,9 @@ import { NotifierService } from 'src/app/core/services/notifier.service';
 const USER_DB: Observable<User[]> = of([
   {
     id: 1,
-    name: 'Marcos',
-    surname: 'Rodriguez',
-    email: 'mark@mail.com',
-    password: '123456',
-  },
-  {
-    id: 2,
-    name: 'Julian',
-    surname: 'Perez',
-    email: 'jperez@mail.com',
+    name: 'Agustin',
+    surname: 'Camassa',
+    email: 'ac@email.com',
     password: '123456',
   },
 ]).pipe(delay(1000));
