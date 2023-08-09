@@ -62,11 +62,16 @@ export class UserService {
   }
 
   deleteUserById(id: number): void {
-    this._users$.pipe(take(1)).subscribe({
-      next: (arrayActual) => {
-        this._users$.next(arrayActual.filter((u) => u.id !== id));
-        this.notifier.showSuccess('Usuario eliminado');
-      },
-    });
+    this.httpClient.delete('http://localhost:3000/users/' + id)
+      .pipe(
+        mergeMap(
+          (responseUserDelete) => this.users$.pipe(
+            take(1), 
+            map((arrayActual) => arrayActual.filter((u) => u.id !== id))
+          )
+        )
+      ).subscribe({
+        next: (arrayActualizado) => this._users$.next(arrayActualizado),
+      })
   }
 }
