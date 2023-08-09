@@ -1,17 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CreateUserData, UpdateUserData, User } from './models';
-import { BehaviorSubject, Observable, Subject, delay, map, of, take } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, delay, map, merge, mergeMap, of, take } from 'rxjs';
 import { NotifierService } from 'src/app/core/services/notifier.service';
-
-const USER_DB: Observable<User[]> = of([
-  {
-    id: 1,
-    name: 'Agustin',
-    surname: 'Camassa',
-    email: 'ac@email.com',
-    password: '123456',
-  },
-]).pipe(delay(1000));
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -20,12 +11,14 @@ export class UserService {
   private _users$ = new BehaviorSubject<User[]>([]);
   private users$ = this._users$.asObservable();
 
-  constructor(private notifier: NotifierService) {}
+  constructor(private notifier: NotifierService, private httpClient: HttpClient) {}
 
   loadUsers(): void {
-    USER_DB.subscribe({
-      next: (usuariosFromDb) => this._users$.next(usuariosFromDb),
-    });
+    this.httpClient.get<User[]>('http://localhost:3000/users').subscribe({
+      next: (response) => {
+        this._users$.next(response);
+      }
+    })
   }
 
   getUsers(): Observable<User[]> {
@@ -39,19 +32,20 @@ export class UserService {
     )
   }
 
-  createUser(user: CreateUserData): void {
-    // TAKE 1 = solo quiero recibir una emision
-    // SUPER IMPORTANTE PORQUE DE LO CONTRARIO,
-    // CREARIAN UN BUCLE INFINITO
-    this.users$.pipe(take(1)).subscribe({
-      next: (arrayActual) => {
-        this._users$.next([
-          ...arrayActual,
-          { ...user, id: arrayActual.length + 1 },
-        ]);
-        this.notifier.showSuccess('Usuario creado');
-      },
-    });
+  createUser(payload: CreateUserData): void {
+    this.httpClient.post<User>('http://localhost:3000/users', payload)
+    .pipe(
+      mergeMap((userCreate) => this.users$.pipe(
+        take(1), map(
+          (arrayActual) => [...arrayActual, userCreate])
+        )
+      )
+    )
+    .subscribe({
+      next: (arrayActualizado) => {
+        this._users$.next(arrayActualizado);
+      }
+    })
   }
 
   updateUserById(id: number, usuarioActualizado: UpdateUserData): void {
