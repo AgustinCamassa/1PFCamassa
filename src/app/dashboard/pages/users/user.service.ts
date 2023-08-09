@@ -17,6 +17,9 @@ export class UserService {
     this.httpClient.get<User[]>('http://localhost:3000/users').subscribe({
       next: (response) => {
         this._users$.next(response);
+      },
+      error: () => {
+        this.notifier.showError('Error al cargar los usuarios');
       }
     })
   }
@@ -49,16 +52,9 @@ export class UserService {
   }
 
   updateUserById(id: number, usuarioActualizado: UpdateUserData): void {
-    this.users$.pipe(take(1)).subscribe({
-      next: (arrayActual) => {
-        this._users$.next(
-          arrayActual.map((u) =>
-            u.id === id ? { ...u, ...usuarioActualizado } : u
-          )
-        );
-        this.notifier.showSuccess('Usuario Actualizado');
-      },
-    });
+    this.httpClient.put('http://localhost:3000/users/' + id, usuarioActualizado).subscribe({
+      next: () => this.loadUsers(),
+    })
   }
 
   deleteUserById(id: number): void {
