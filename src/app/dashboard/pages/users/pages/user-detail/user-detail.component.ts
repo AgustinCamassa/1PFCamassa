@@ -35,11 +35,5 @@ export class UserDetailComponent {
         next: (user) => console.log(user),
       })
     }
-    // couserService.getCoursesByUserId(this.activatedRoute.snapshot.paramMap.get('id')).
-    // usersService.getUserById(this.activatedRoute.snapshot.paramMap.get('id')).subscribe({
-    //   next: (user) => {
-    //     this.user = user;
-    //   }
-    // })
   }
 }

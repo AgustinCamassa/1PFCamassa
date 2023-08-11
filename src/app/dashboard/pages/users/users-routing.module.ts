@@ -12,12 +12,10 @@ import { UserDetailComponent } from './pages/user-detail/user-detail.component';
     CommonModule,
     RouterModule.forChild([
       {
-        // /dashboard/users
         path: '',
         component: UsersComponent,
       },
       {
-        // /dashboard/users/:id
         path: ':id',
         component: UserDetailComponent
       }
