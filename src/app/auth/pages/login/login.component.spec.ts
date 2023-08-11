@@ -2,7 +2,7 @@ import { TestBed } from "@angular/core/testing";
 import { LoginComponent } from "./login.component"
 import { MatFormFieldControl } from "@angular/material/form-field";
 import { MatInputModule } from "@angular/material/input";
-
+import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 describe('LoginComponent', () => {
     let component: LoginComponent;
@@ -10,7 +10,7 @@ describe('LoginComponent', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [LoginComponent],
-            imports: [MatFormFieldControl, MatInputModule]
+            imports: [MatFormFieldControl, MatInputModule, HttpClientTestingModule]
         })
         component = TestBed.createComponent(LoginComponent).componentInstance
     })
@@ -19,6 +19,6 @@ describe('LoginComponent', () => {
         component.emailControl.setValue('');
         component.passwordControl.setValue('');
 
-        expect(component.loginForm.invalid).toBe(true);
+        expect(component.loginForm.invalid).toBeTrue();
     })
 })
