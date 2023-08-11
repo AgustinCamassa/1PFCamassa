@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { LoginPayLoad } from "../model";
+import { LoginPayLoad } from "./model";
 import { BehaviorSubject, Observable, map, take } from "rxjs";
 import { User } from "src/app/dashboard/pages/users/models";
 import { NotifierService } from "src/app/core/services/notifier.service";
