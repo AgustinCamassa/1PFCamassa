@@ -18,26 +18,12 @@ import { UsersRoutingModule } from './users-routing.module';
   imports: [CommonModule, SharedModule, RouterModule, UsersRoutingModule],
   exports: [UsersComponent],
   providers: [
-    // {
-    //   // Cuando UserService sea proveido
-    //   provide: UserService,
-    //   // Usa esta clase...
-    //   useClass: UserMockService,
-    // },
+
     {
       provide: 'IS_DEV',
       useValue: false,
     },
-    // {
-    //   provide: UserService,
-    //   useFactory: (authService: AuthService) => {
-    //     const isAdmin = authService.authUser.role === 'ADMIN';
-    //     return isAdmin ? new UserMockService() : new UserService();
-    //   },
-    //   deps: [
-    //     AuthService
-    //   ]
-    // },
+
   ],
 })
 export class UsersModule {}

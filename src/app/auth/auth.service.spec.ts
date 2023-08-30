@@ -3,8 +3,8 @@ import { AuthService } from "./auth.service";
 import { TestBed } from "@angular/core/testing";
 import { RouterTestingModule } from "@angular/router/testing";
 import { User } from "../dashboard/pages/users/models";
-import { RouterMock } from "../core/mocks/router.mock";
 import { Router } from "@angular/router";
+import { MockProvider } from 'ng-mocks';
 
 describe('AuthService', () => {
     let service: AuthService;
@@ -14,17 +14,18 @@ describe('AuthService', () => {
         TestBed.configureTestingModule({
             imports: [HttpClientTestingModule, RouterTestingModule],
             providers: [
-                {
-                    provide: Router,
-                    useClass: RouterMock,
-                }
+                MockProvider(Router)
             ]
         });
         service = TestBed.inject(AuthService);
         httpController = TestBed.inject(HttpTestingController);
     })
 
-    it('Si el login es válido el observable authUser$ debe emitir un valor', () => {
+    afterEach(() => {
+        httpController.verify();
+    })
+
+    it('Si el login es válido el observable authUser$ debe emitir un valor', (done) => {
         const mockUser: User = {
             id: 1,
             email: 'fake@mail.com',
@@ -44,5 +45,13 @@ describe('AuthService', () => {
             method: 'GET',
             url: `http://localhost:3000/users?email=${mockUser.email}&password=${mockUser.password}`
         }).flush(mockResponse)
+
+        service.authUser$.subscribe({
+            next: (authUser) => {
+                expect(authUser).toBeTruthy();
+                expect(authUser).toEqual(mockUser);
+                done();
+            }
+        })
     })
 })
