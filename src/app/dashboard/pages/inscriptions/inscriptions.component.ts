@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { InscriptionsActions } from './store/inscriptions.actions';
 
 @Component({
   selector: 'app-inscriptions',
@@ -6,6 +8,13 @@ import { Component } from '@angular/core';
   styles: [
   ]
 })
-export class InscriptionsComponent {
+export class InscriptionsComponent implements OnInit {
 
+  constructor(private store: Store) {}
+
+  displayedColumns = ['id', 'name', 'actions']
+
+  ngOnInit(): void {
+    this.store.dispatch(InscriptionsActions.loadInscriptions())
+  }
 }
